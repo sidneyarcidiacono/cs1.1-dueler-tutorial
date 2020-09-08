@@ -36,7 +36,7 @@ class Team:
             kd = hero.kills / hero.num_deaths
             print("{} Kill/Deaths: {}".format(hero.name, kd))
 
-    def revive_hero(self):
+    def revive_heroes(self):
         """Revive dead hero."""
         for hero in self.heroes:
             hero.current_health = hero.starting_health
@@ -57,7 +57,7 @@ class Team:
             opponent_hero = choice(other_team.heroes)
             your_hero.fight(opponent_hero)
             if your_hero.fight(opponent_hero) == your_hero:
-                living_opponents.pop(opponent_hero)
+                living_opponents.remove(opponent_hero)
             else:
-                living_heroes.pop(your_hero)
-            return f'{winner} is the winner!'
+                living_heroes.remove(your_hero)
+        return f'{your_hero.fight(opponent_hero)} is the winner!'

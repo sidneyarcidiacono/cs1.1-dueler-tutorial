@@ -22,27 +22,28 @@ class Hero:
         """Make hero fight other hero."""
         winner = ''
         if self.abilities or opponent.abilities:
-            while self.is_alive() is True or opponent.is_alive() is True:
+            while self.is_alive() and opponent.is_alive():
                 self.attack()
                 opponent.defend()
                 opponent.take_damage(self.attack())
                 opponent.attack()
                 self.defend()
                 self.take_damage(opponent.attack())
-                if opponent.is_alive() is False:
+                if not opponent.is_alive():
                     winner = self.name
                     self.add_kill_statistics(1)
                     opponent.set_deaths(1)
                     break
-                elif self.is_alive() is False:
+                elif not self.is_alive():
                     winner = opponent.name
                     self.set_deaths(1)
                     opponent.add_kill_statistics(1)
                     break
-            print(f'{winner} won!')
-            return winner
         else:
             print('Draw!')
+        print(f'{winner} won!')
+        return winner
+
 
 
     def add_ability(self, ability):
