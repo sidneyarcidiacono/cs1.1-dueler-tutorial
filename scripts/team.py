@@ -55,9 +55,10 @@ class Team:
         while len(living_heroes) > 0 and len(living_opponents) > 0:
             your_hero = choice(self.heroes)
             opponent_hero = choice(other_team.heroes)
-            your_hero.fight(opponent_hero)
-            if your_hero.fight(opponent_hero) == your_hero:
+            winner = your_hero.fight(opponent_hero)
+            if winner == your_hero.name:
                 living_opponents.remove(opponent_hero)
             else:
                 living_heroes.remove(your_hero)
-        return f'{your_hero.fight(opponent_hero)} is the winner!'
+        print(f'{winner} is the winner!')
+        return winner

@@ -41,7 +41,6 @@ class Hero:
                     break
         else:
             print('Draw!')
-        print(f'{winner} won!')
         return winner
 
 
